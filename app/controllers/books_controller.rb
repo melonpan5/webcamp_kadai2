@@ -7,6 +7,7 @@ class BooksController < ApplicationController
   	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
     @user =current_user
     @newbook = Book.new
+
   end
 
 
@@ -14,6 +15,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @newbook = Book.new
     @user = @book.user
+    @book_comment = BookComment.new
   end
 
   def new
