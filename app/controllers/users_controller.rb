@@ -55,6 +55,7 @@ class UsersController < ApplicationController
       render 'followers'
     end
 
+   
 
   private
   def user_params

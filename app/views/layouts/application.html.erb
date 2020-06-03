@@ -36,6 +36,19 @@
 
       </div>
     </header>
+      <!-- 検索フォーム -->
+    <div class="search_form" >
+      <% if user_signed_in? %>
+        <%= form_with( url: search_path, method: :get, local: true) do |f| %>
+          <%= f.text_field :search %>
+          <%= select_tag(:itemoption, options_for_select([["user", "user"],["book","book"]]))%> 
+          <%= select_tag(:choice, options_for_select([["完全一致", "1" ],["前方一致", "2" ],["後方一致", "3" ],["部分一致", "4" ]])) %>
+          <%= f.submit('検索') %>
+        <% end %>
+      <% end %>
+    </div>
+<!-- 検索フォーム -->
+
     <!--ヘッダーの記述-->
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
