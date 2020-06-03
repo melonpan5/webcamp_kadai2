@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   end
  
   get'search' =>'searches#index'
-	
+
+  #post '/dreams/:dream_id/likes' => "likes#create"
+  #delete '/dreams/:dream_id/likes' => "likes#destroy"
+  	
 end
