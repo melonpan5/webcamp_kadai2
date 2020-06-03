@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     member do
      get :follows, :followers
     end
-    get :search, on: :collection #検索用
   end
 
   resources :relationships,only: [:create, :destroy]
@@ -16,7 +15,6 @@ Rails.application.routes.draw do
   resources :books,only: [ :index, :new, :show, :create, :edit, :update, :destroy ] do
   	resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
-     get :search, on: :collection #検索用
   end
  
   get'search' =>'searches#index'
