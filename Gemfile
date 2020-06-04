@@ -83,3 +83,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 
 gem "geocoder"
+
+gem 'dotenv-rails'

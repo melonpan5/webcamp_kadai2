@@ -77,7 +77,7 @@ end
 # 住所Mapここまで
   attachment :profile_image, destroy: false
 
- 
+  ENV['MAPKEY']
 
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
