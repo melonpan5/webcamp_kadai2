@@ -50,10 +50,35 @@ end
       end
     end
 
+# 住所自動入力
+  include JpPrefecture
+  jp_prefecture :prefecture_code
 
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
 
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
 
+# 住所自動入力ここまで
+
+# 住所Map
+  geocoded_by :address
+  after_validation :geocode #, if: :address_changed?
+  after_validation :address
+
+  def address
+    self.address = "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"     
+
+  end
+
+# 住所Mapここまで
   attachment :profile_image, destroy: false
+
+ 
+
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, presence: true, length: {maximum: 20, minimum: 2}

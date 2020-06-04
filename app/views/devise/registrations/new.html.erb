@@ -15,6 +15,29 @@
     <%= f.email_field :email, autofocus: true, class: "email" %>
   </div>
 
+
+  <!-- 住所 -->
+  <div class="field">
+    <%= f.label :post_code %><br />
+    <%= f.text_field :postcode %>
+  </div>
+   <div class="field">
+    <%= f.label :prefecture %><br />
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %><br>
+  </div>
+  <div class="field">
+    <%= f.label :address_city %><br />
+    <%= f.text_field :address_city %>
+  </div>
+  <div class="field">
+    <%= f.label :address_street %><br />
+  <%= f.text_field :address_street %>
+  </div>
+  <div class="field">
+    <%= f.label :address_building %><br />
+  <%= f.text_field :address_building %>
+  </div>
+  <!-- ここまで住所 -->
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -22,6 +45,7 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password", class: "password" %>
   </div>
+
 
 <!--パスワード確認入力フォーム-->
   <div class="field">

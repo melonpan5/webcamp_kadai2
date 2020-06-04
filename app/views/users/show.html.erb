@@ -51,4 +51,8 @@
 <!--books一覧 -->
 </div>
 </div>
+<% if current_user.id == @user.id %>
+<h2>Your map</h2>
+<%= render 'users/map', user: @user %>
 
+<% end %>
