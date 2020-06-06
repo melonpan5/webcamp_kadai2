@@ -35,7 +35,7 @@ class UsersController < ApplicationController
  def destroy
        @user = User.find(params[:id])
      if @user.destroy
-      redirect_to homes
+      redirect_to root_path
       flash[:notice] = 'Signed out successfully'
      else
       render :show

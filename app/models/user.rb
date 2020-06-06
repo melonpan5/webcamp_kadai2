@@ -66,18 +66,15 @@ end
 
 # 住所Map
   geocoded_by :address
-  after_validation :geocode #, if: :address_changed?
   after_validation :address
+  after_validation :geocode #, if: :address_changed?
 
   def address
     self.address = "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"     
-
   end
 
 # 住所Mapここまで
   attachment :profile_image, destroy: false
-
-  ENV['MAPKEY']
 
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。

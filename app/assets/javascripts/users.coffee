@@ -5,7 +5,7 @@
 
 
 
-$ ->
+$(document).on 'turbolinks:load', ->
   $("#user_postcode").jpostal({
     postcode : [ "#user_postcode" ],
     address  : {

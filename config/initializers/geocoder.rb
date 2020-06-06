@@ -9,7 +9,7 @@ Geocoder.configure(
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
 
 #YOUR_API_KEYにはご自身のAPIキーを記述してください。
-   api_key:"<%= ENV['PUBLIC_KEY'] %>",               # API key for geocoding service
+   api_key:ENV['MAPKEY'],            # API key for geocoding service
   # cache: nil,                 # cache object (must respond to #[], #[]=, and #del)
   # cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
 
@@ -19,6 +19,6 @@ Geocoder.configure(
   # always_raise: [],
 
   # Calculation options
-  # units: :mi,                 # :km for kilometers or :mi for miles
+   units: :km,                 # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
 )
