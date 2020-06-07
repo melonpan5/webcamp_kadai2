@@ -8,6 +8,8 @@ Rails.application.routes.draw do
      get :follows, :followers
     end
   end
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 
   resources :relationships,only: [:create, :destroy]
 

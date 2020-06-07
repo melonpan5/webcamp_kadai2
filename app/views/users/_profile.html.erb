@@ -20,7 +20,10 @@
 		</tr>
 
 </table>
-
+<!-- チャット機能 -->
+		<% if current_user != user %>
+		  <%= link_to 'chatを始める', chat_path(user.id)%>
+		<% end %>
 
 		<% if current_user.id == user.id %>
 				<div class="row">

@@ -16,7 +16,11 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :follows, through: :follower, source: :followed # 自分がフォローしている人
   has_many :followers, through: :followed, source: :follower # 自分をフォローしている人
-
+  #chat
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
+  # resources :rooms, only: [:show, :create]
+  has_many :chats
 
  # ユーザーをフォローする
 def follow(user_id)
