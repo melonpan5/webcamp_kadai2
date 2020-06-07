@@ -1,11 +1,4 @@
-class ThanksMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.thanks_mailer.user_thanks_mail.subject
-  #
- 
+class Users::Mailer < Devise::Mailer
   helper :application
   include Devise::Controllers::UrlHelpers
   default template_path: 'devise/mailer'
@@ -20,5 +13,4 @@ class ThanksMailer < ApplicationMailer
     #件名の指定以外は親を継承
     super
   end
-
 end

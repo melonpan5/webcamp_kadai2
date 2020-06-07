@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable,:validatable,:confirmable 
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
@@ -66,13 +66,13 @@ end
 # 住所自動入力ここまで
 
 # 住所Map
-  geocoded_by :address
-  after_validation :address
-  after_validation :geocode #, if: :address_changed?
+  # geocoded_by :address
+  # after_validation :address
+  # after_validation :geocode #, if: :address_changed?
 
-  def address
-    self.address = "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"     
-  end
+  # def address
+  #   address = "#{self.prefecture_name}#{self.address_city}#{self.address_street}#{self.address_building}"     
+  # end
 
 # 住所Mapここまで
   attachment :profile_image, destroy: false

@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  def create
-    super do                                             # 他はdeviseの機能をそのまま流用する
-      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
-      #↓と同じ意味になります。
-      # resource.skip_confirmation!
-      # resource.save
-    end
-  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -18,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do                                             # 他はdeviseの機能をそのまま流用する
+      resource.update(confirmed_at: Time .now.utc)       # Welcomeメールを送信した上で、skip_confirmation!と同一処理を行い自動で認証クローズさせる
+      #↓と同じ意味になります。
+      # resource.skip_confirmation!
+      # resource.save
+    end
+  end
 
   # GET /resource/edit
   # def edit

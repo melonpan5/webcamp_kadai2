@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 	before_action :baria_user, only: [:update, :destroy]
   before_action :authenticate_user!
 
+  def create
+     current_user.create(create_params)
+      ThanksMailer.send_when_create(current_user).deliver
+    end
+
   def show
   	@user = User.find(params[:id])
   	@books = @user.books
