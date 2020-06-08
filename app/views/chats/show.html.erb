@@ -10,7 +10,11 @@
   <% end %>
 </div>
 
-<%= form_with model: @chat, data: {remote: true} do |f| %>
-  <%= f.text_field :message %>
+
+<%= form_with model: @chat, data: {remote: true, turbolinks: false }, id:"new_message" do |f| %>
+  <%= f.text_field :message, class: "chat_message" %></br>
   <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :user_id, :value => @user.id %> 
+  <%= f.submit class: "btn btn-priary col-xs-3" %>
+
 <% end %>

@@ -12,14 +12,22 @@ class ChatsController < ApplicationController
 		      UserRoom.create(user_id: current_user.id, room_id: @room.id)
 		      UserRoom.create(user_id: @user.id, room_id: @room.id)
 	    end
-	    	@chats = @room.chats
-	    	@chat = Chat.new(room_id: @room.id)
+	    @chats = @room.chats
+	    @chat = Chat.new(room_id: @room.id) 
+	    # 予めルームIDはカラムに入れておく→HiddenFIeld記述可能に
 	  	end
 
   	def create
 	    @chat = current_user.chats.new(chat_params)
-	    @chat.save
-  end
+	    if @chat.save!
+	    	respond_to do |f|
+	    	f.html{ redirect_back(fallback_location: root_path)}
+	    	f.json
+	    	end
+	    else
+	    		//
+	    end
+  	end
 
  private
 	  def chat_params
