@@ -19,14 +19,8 @@ class ChatsController < ApplicationController
 
   	def create
 	    @chat = current_user.chats.new(chat_params)
-	    if @chat.save!
-	    	respond_to do |f|
-	    	f.html{ redirect_back(fallback_location: root_path)}
-	    	f.json
-	    	end
-	    else
-	    		//
-	    end
+		@chat.save!
+
   	end
 
  private
