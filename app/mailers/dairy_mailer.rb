@@ -1,10 +1,10 @@
 class DairyMailer < ApplicationMailer
 	 def notify_user
-        default to: -> { User.pluck(:email) }
-        mail(subject: "everyday Bookers!yay!")
+        mail(bcc: User.pluck(:email), subject:"ご連絡")
     end
-     def create_book
+    #  def create_book
+    #  	Book.create(user_id: 1, title: "タイトル" ,body: "BODY")
        
-    end
+    # end
 end
 

@@ -6,21 +6,11 @@
 # Example:
 #
 # 絶対パスから相対パス指定
-# env :PATH, ENV['PATH']
-# sanoshi : rails_env = ENV['RAILS_ENV'] ||= 'development'
-require File.expand_path(File.dirname(__FILE__) + "/environment")
-# cronを実行する環境変数
-rails_env = ENV['RAILS_ENV'] || :development
-
-set :output, error: 'log/crontab_error.log', standard: 'log/crontab.log'
-set :environment, rails_env
-ENV.each { |k, v| env(k, v) } # これを追加
+env :PATH, ENV['PATH']
 # ログファイルの出力先
 set :output, 'log/cron.log'
 # ジョブの実行環境の指定
 set :environment, :development
-# PATH add
-env :PATH, ENV['PATH']
 
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -30,10 +20,9 @@ env :PATH, ENV['PATH']
 
 # every 1.days, at: '9:00 am' do
 every 1.minutes do
+  rake 'dailymailer:sample'
+end
 #
 # Rails内のメソッド実行
- runner "DairyMailer.notify_user"
- runner "DairyMailer.create_book"
-end
 
 # Learn more: http://github.com/javan/whenever
