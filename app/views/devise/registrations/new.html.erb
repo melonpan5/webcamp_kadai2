@@ -22,7 +22,7 @@
     <%= f.text_field :postcode %>
   </div>
    <div class="field">
-    <%= f.label :prefecture %><br />
+    <%= f.label :prefecture_code %><br />
     <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %><br>
   </div>
   <div class="field">
